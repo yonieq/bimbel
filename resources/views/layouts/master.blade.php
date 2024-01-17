@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css')}}">
     {{-- Select Option   --}}
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('assets/extensions/flatpickr/flatpickr.min.css')}}">
 </head>
 
 <body>
@@ -63,6 +65,10 @@
 {{-- Select Option --}}
 <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js')}}"></script>
 <script src="{{ asset('assets/static/js/pages/form-element-select.js')}}"></script>
+
+<script src="{{ asset('assets/extensions/flatpickr/flatpickr.min.js')}}"></script>
+<script src="{{ asset('assets/static/js/pages/date-picker.js')}}"></script>
+
 <script>
     // If you want to use tooltips in your project, we suggest initializing them globally
     // instead of a "per-page" level.

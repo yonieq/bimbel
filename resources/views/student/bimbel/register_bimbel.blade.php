@@ -23,8 +23,7 @@
                     </div>
                     <label for="address">Alamat: </label>
                     <div class="form-group">
-                        <textarea id="address" name="address" placeholder="Alamat" class="form-control" required>{{ auth()->user()->address }}
-                        </textarea>
+                        <textarea id="address" name="address" placeholder="Alamat" class="form-control" required>{{ auth()->user()->address }}</textarea>
                     </div>
                     <label for="photo">Photo: </label>
                     <div class="form-group">

@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\Admin\PaymentDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryBimbel;
+use App\Models\Invoice;
 use App\Models\PaymentBimbel;
 use App\Models\StudentOfBimbel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class PaymentController extends Controller
 {
@@ -94,6 +96,18 @@ class PaymentController extends Controller
 
             $student->update([
                 'active' => true,
+            ]);
+
+            $invoiceId = Invoice::max('id') + 1;
+
+            // Membuat kode invoice
+            $invoiceCode = 'INV/' . Carbon::now()->format('dmY') . '/' . $invoiceId;
+
+            // create invoice
+            $invoice = Invoice::create([
+                'code' => $invoiceCode,
+                'student_id' => $student->id,
+                'payment_bimbels_id' => $payment->id,
             ]);
         }
 

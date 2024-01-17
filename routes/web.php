@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryBimbelController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\JadwalBimbelController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\RekeningController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\DashboardController;
@@ -40,6 +42,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('admin_register', RegisterController::class);
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('setting/update', [SettingController::class, 'update'])->name('setting.update');
+    Route::resource('invoice', InvoiceController::class);
+    Route::resource('report', ReportController::class);
 });
 
 Route::group(['prefix' => 'student'], function () {
@@ -50,4 +54,8 @@ Route::group(['prefix' => 'student'], function () {
     Route::get('bimbel/payment/{id}', [BimbelController::class, 'confirm_payment'])->name('bimbel.payment');
     Route::put('bimbel/paid/{id}', [BimbelController::class, 'paid'])->name('bimbel.paid');
     Route::resource('payment', PaymentController::class);
+});
+
+Route::get('template/invoice', function () {
+    return view('template.invoice');
 });

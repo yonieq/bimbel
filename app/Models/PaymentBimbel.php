@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PaymentBimbel extends Model
 {
@@ -17,5 +18,10 @@ class PaymentBimbel extends Model
     public function bimbel(): BelongsTo
     {
         return $this->belongsTo(CategoryBimbel::class, 'category_bimbel_id', 'id');
+    }
+
+    public function invoice(): HasMany
+    {
+        return $this->hasMany(Invoice::class, 'payment_bimbels_id', 'id');
     }
 }

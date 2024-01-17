@@ -97,15 +97,15 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                    <li class="sidebar-item {{ request()->routeIs('invoice.*') ? 'active' : '' }}">
+                        <a href="{{ route('invoice.index') }}" class='sidebar-link'>
                             <i class="bi bi-receipt"></i>
                             <span>Invoice</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="{{ route('dashboard') }}" class='sidebar-link'>
+                    <li class="sidebar-item {{ request()->routeIs('report.*') ? 'active' : '' }}">
+                        <a href="{{ route('report.index') }}" class='sidebar-link'>
                             <i class="bi bi-wallet"></i>
                             <span>Laporan Keuangan</span>
                         </a>
