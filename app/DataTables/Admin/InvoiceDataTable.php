@@ -24,7 +24,7 @@ class InvoiceDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($data) {
                 return '<div class="btn-group">
-                                <a href="' . route('bimbel.payment', $data->id) . '" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cetak Invoice"><i class="bi bi-printer"></i></a>
+                                <a href="' . route('download.invoice', $data->payment_bimbels_id) . '" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cetak Invoice"><i class="bi bi-printer"></i></a>
                             </div>';
             })
             ->editColumn('created_at', function ($data) {

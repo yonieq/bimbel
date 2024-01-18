@@ -29,7 +29,7 @@ class PaymentDataTable extends DataTable
                             </div>';
                 } elseif ($data->status === 'done') {
                     return '<div class="btn-group">
-                                <a href="' . route('bimbel.payment', $data->id) . '" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cetak Invoice"><i class="bi bi-printer"></i></a>
+                                <a href="' . route('download.invoice', $data->id) . '" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cetak Invoice"><i class="bi bi-printer"></i></a>
                                 <a href="' . route('bimbel.show', $data->category_bimbel_id) . '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat Detail"><i class="bi bi-eye"></i></a>
                             </div>';
                 } elseif ($data->status === 'waiting') {

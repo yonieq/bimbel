@@ -1,53 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('title')</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title')</title>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+    <link rel="shortcut icon" href="{{ asset('assets/compiled/svg/favicon.svg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/logo/logo.jpg')}}" type="image/png">
+    <link rel="stylesheet" href="{{ asset('assets/compiled/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/compiled/css/error.css')}}">
+</head>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<body>
+<script src="{{ asset('assets/static/js/initTheme.js')}}"></script>
+<div id="error">
 
-            .position-ref {
-                position: relative;
-            }
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 36px;
-                padding: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <div class="title">
-                    @yield('message')
-                </div>
+    <div class="error-page container">
+        <div class="col-md-8 col-12 offset-md-2">
+            <div class="text-center">
+                <img class="img-error" src="{{ asset('assets/compiled/svg/error-403.svg')}}" alt="Not Found">
+                <h1 class="error-title">@yield('message')</h1>
+{{--                <p class="fs-5 text-gray-600">You are unauthorized to see this page.</p>--}}
+                <a href="{{ route('dashboard') }}" class="btn btn-lg btn-outline-primary mt-3">Ke Beranda</a>
             </div>
         </div>
-    </body>
+    </div>
+
+
+</div>
+</body>
+
 </html>

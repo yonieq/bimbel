@@ -54,6 +54,7 @@ Route::group(['prefix' => 'student'], function () {
     Route::get('bimbel/payment/{id}', [BimbelController::class, 'confirm_payment'])->name('bimbel.payment');
     Route::put('bimbel/paid/{id}', [BimbelController::class, 'paid'])->name('bimbel.paid');
     Route::resource('payment', PaymentController::class);
+    Route::get('download_invoice/{id}', [PaymentController::class, 'download_invoice'])->name('download.invoice');
 });
 
 Route::get('template/invoice', function () {

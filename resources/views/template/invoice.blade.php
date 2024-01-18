@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>{{ $invoice->code }}</title>
 
     <style>
         .invoice-box {
@@ -108,15 +108,14 @@
                     <tr>
                         <td class="title">
                             <img
-                                src="https://sparksuite.github.io/simple-html-invoice-template/images/logo.png"
+                                src="{{ asset('storage/' . $setting->logo) }}"
                                 style="width: 100%; max-width: 300px"
                             />
                         </td>
 
                         <td>
-                            Invoice #: 123<br />
-                            Created: January 1, 2023<br />
-                            Due: February 1, 2023
+                            No. Invoice #: {{ $invoice->code }}<br />
+                            Created: {{ formatTanggal($invoice->created_at) }}<br />
                         </td>
                     </tr>
                 </table>
@@ -128,15 +127,15 @@
                 <table>
                     <tr>
                         <td>
-                            Sparksuite, Inc.<br />
-                            12345 Sunny Road<br />
-                            Sunnyville, CA 12345
+                            {{ $invoice->student->user->name }} <br />
+                            {{ $invoice->student->user->no_telp }}<br />
+                            {{ $invoice->student->user->email }}
                         </td>
 
                         <td>
-                            Acme Corp.<br />
-                            John Doe<br />
-                            john@example.com
+                            {{ $setting->app_name }}<br />
+                            {{ $setting->phone }}<br />
+                            {{ $setting->email }}
                         </td>
                     </tr>
                 </table>
@@ -150,9 +149,9 @@
         </tr>
 
         <tr class="details">
-            <td>Check</td>
+            <td>Bank Transfer</td>
 
-            <td>1000</td>
+{{--            <td>1000</td>--}}
         </tr>
 
         <tr class="heading">
@@ -162,27 +161,27 @@
         </tr>
 
         <tr class="item">
-            <td>Website design</td>
+            <td>{{ $payment->bimbel->name }}</td>
 
-            <td>$300.00</td>
+            <td>{{ formatRupiah($payment->bimbel->price) }}</td>
         </tr>
 
-        <tr class="item">
-            <td>Hosting (3 months)</td>
+{{--        <tr class="item">--}}
+{{--            <td>Hosting (3 months)</td>--}}
 
-            <td>$75.00</td>
-        </tr>
+{{--            <td>$75.00</td>--}}
+{{--        </tr>--}}
 
-        <tr class="item last">
-            <td>Domain name (1 year)</td>
+{{--        <tr class="item last">--}}
+{{--            <td>Domain name (1 year)</td>--}}
 
-            <td>$10.00</td>
-        </tr>
+{{--            <td>$10.00</td>--}}
+{{--        </tr>--}}
 
         <tr class="total">
             <td></td>
 
-            <td>Total: $385.00</td>
+            <td>Total: Rp. {{ formatRupiah($payment->bimbel->price) }}</td>
         </tr>
     </table>
 </div>

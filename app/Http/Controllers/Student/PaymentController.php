@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Student;
 
 use App\DataTables\Student\PaymentDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
+use App\Models\PaymentBimbel;
+use App\Models\Setting;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -67,5 +71,22 @@ class PaymentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function download_invoice($id)
+    {
+        $this->data['payment'] = PaymentBimbel::findOrFail($id);
+
+        // Setting
+        $this->data['setting'] = Setting::first();
+
+        // check invoice data
+        $this->data['invoice'] = Invoice::where('payment_bimbels_id', $id)->first();
+
+        $pdf = Pdf::loadView('template.invoice', $this->data);
+
+
+
+        return $pdf->download($this->data['invoice']->code.'.pdf');
     }
 }
