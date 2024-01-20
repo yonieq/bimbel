@@ -60,11 +60,11 @@ class RekeningController extends Controller
     {
         $data = Rekening::findOrFail($id);
 
-        try {
-            $data->delete();
-            return redirect()->route('rekening.index')->with('success', 'Data rekening berhasil dihapus.');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
+        $data->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil menghapus data'
+        ]);
     }
 }

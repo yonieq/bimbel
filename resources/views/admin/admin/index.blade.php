@@ -35,22 +35,53 @@
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
     <script>
-        function deleteData(id) {
+        //button create post event
+        $('body').on('click', '#btn-delete-post', function () {
+
+            let post_id = $(this).data('id');
+            let token = $("meta[name='csrf-token']").attr("content");
+
             Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Anda tidak dapat mengembalikan data yang sudah dihapus!",
+                title: 'Apakah Kamu Yakin?',
+                text: "ingin menghapus data ini!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal'
+                cancelButtonText: 'TIDAK',
+                confirmButtonText: 'YA, HAPUS!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $("form").submit();
+
+                    console.log('test');
+
+                    //fetch to delete data
+                    $.ajax({
+
+                        url: `{{ route('user_admin.destroy', '') }}/` + post_id,
+                        type: "DELETE",
+                        cache: false,
+                        data: {
+                            "_token": token
+                        },
+                        success: function (response) {
+
+                            //show success message
+                            Swal.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: `${response.message}`,
+                                showConfirmButton: false,
+                                timer: 3000
+                            }).then(function () {
+                                location.reload();
+                            });
+                        }
+                    });
+
+
                 }
-            });
-        }
+            })
+
+        });
     </script>
 @endpush
 

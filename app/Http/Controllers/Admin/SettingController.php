@@ -36,33 +36,22 @@ class SettingController extends Controller
             'description' => $request->input('description'),
         ];
 
-        // Menghandle upload logo
         if ($request->hasFile('logo')) {
-            $uploadedLogo = $request->file('logo');
-            $logoFileName = $uploadedLogo->storeAs('logo', 'logo.' . $uploadedLogo->getClientOriginalExtension(), 'public');
+            $logoFile = $request->file('logo');
+            $logoData = base64_encode(file_get_contents($logoFile->path()));
+            $logoExtension = $logoFile->getClientOriginalExtension();
 
-            // Hapus logo lama jika ada
-            if ($setting->logo) {
-                Storage::disk('public')->delete('logo/' . $setting->logo);
-            }
-
-            $data['logo'] = $logoFileName;
+            $data['logo'] = 'data:image/' . $logoExtension . ';base64,' . $logoData;
         }
 
-        // Menghandle upload banner
         if ($request->hasFile('banner')) {
-            $uploadedBanner = $request->file('banner');
-            $bannerFileName = $uploadedBanner->storeAs('banner', 'banner.' . $uploadedBanner->getClientOriginalExtension(), 'public');
+            $bannerFile = $request->file('banner');
+            $bannerData = base64_encode(file_get_contents($bannerFile->path()));
+            $bannerExtension = $bannerFile->getClientOriginalExtension();
 
-            // Hapus banner lama jika ada
-            if ($setting->banner) {
-                Storage::disk('public')->delete('banner/' . $setting->banner);
-            }
-
-            $data['banner'] = $bannerFileName;
+            $data['banner'] = 'data:image/' . $bannerExtension . ';base64,' . $bannerData;
         }
 
-        // Menyimpan data baru ke dalam database
         $setting->update($data);
 
         return redirect()->route('setting.index')->with('success', 'Pengaturan berhasil diperbarui.');

@@ -41,7 +41,7 @@
                                 <div class="col-6 col-sm-6 col-lg-3 mt-2 mt-md-0 mb-md-0 mb-2">
                                     <a href="#">
                                         <img class="w-100"
-                                             src="{{ asset('storage/image_payment/'.$payment->image_payment) }}"
+                                             src="{{ $payment->image_payment }}"
                                              data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
                                     </a>
                                 </div>
@@ -55,14 +55,14 @@
                             <h4>Detail murid yang mendaftar</h4>
                         </div>
                         <div class="card-body">
-                            <h5>Nama : {{ $bimbel->student->first()->user->name }}</h5>
-                            <h5>Email : {{ $bimbel->student->first()->user->email }}</h5>
-                            <h5>No. Telp : {{ $bimbel->student->first()->user->no_telp }}</h5>
-                            <h5>Alamat : {{ $bimbel->student->first()->user->address }}</h5>
+                            <h5>Nama: {{ $payment->user->name }}</h5>
+                            <h5>Email: {{ $payment->user->email }}</h5>
+                            <h5>No. Telp: {{ $payment->user->no_telp }}</h5>
+                            <h5>Alamat: {{ $payment->user->address }}</h5>
                         </div>
                         <div class="card-footer">
                             <h6>Foto : </h6>
-                            <img class="w-25" src="{{ asset('storage/user/'.$bimbel->student->first()->user->photo) }}">
+                            <img class="w-25" src="{{ $bimbel->student->first()->user->photo }}">
                         </div>
                     </div>
                     <div class="card">

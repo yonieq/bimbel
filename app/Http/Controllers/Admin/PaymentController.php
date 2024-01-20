@@ -72,6 +72,12 @@ class PaymentController extends Controller
             ->with(['schedule', 'student.user'])
             ->first();
 
+//        $this->data['student'] = StudentOfBimbel::where('category_bimbel_id', $this->data['payment'])
+//            ->where('user_id', $this->data['payment']->user_id)
+//            ->get();
+
+//        dd($this->data['student']);
+
         return view('admin.payment.edit', $this->data);
     }
 

@@ -95,16 +95,16 @@ class CategoryBimbelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
-        $data = CategoryBimbel::findOrFail($id);
+        $data = CategoryBimbel::where('id', $id);
 
-        try {
-            $data->delete();
-            return redirect()->route('bimbel.index')->with('success', 'Data Kategory Bimbel berhasil dihapus.');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
+        $data->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil menghapus data'
+        ]);
     }
 }

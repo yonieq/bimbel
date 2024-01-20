@@ -44,6 +44,9 @@ class PaymentDataTable extends DataTable
             ->editColumn('category_bimbel_id', function ($data) {
                 return $data->bimbel->name;
             })
+            ->editColumn('user_id', function ($data) {
+                return $data->user->name;
+            })
             ->editColumn('price', function ($data) {
                 return 'Rp. ' . formatRupiah($data->bimbel->price);
             })
@@ -116,6 +119,7 @@ class PaymentDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('category_bimbel_id')->title('Nama Bimbel'),
             Column::make('price')->title('Harga'),
+            Column::make('user_id')->title('Nama Pendaftar'),
             Column::make('status'),
         ];
     }

@@ -33,7 +33,22 @@
                 @endforeach
             </div>
         </section>
-        <form id="uploadForm" action="{{ route('bimbel.paid', $payment->id) }}" method="POST" enctype="multipart/form-data">
+        <section class="section">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Jumlah yang yang dibayarkan</h4>
+                        </div>
+                        <div class="card-body">
+                            <h4>Rp. {{ formatRupiah($payment->bimbel->price) }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <form id="uploadForm" action="{{ route('bimbel.paid', $payment->id) }}" method="POST"
+              enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">

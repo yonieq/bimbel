@@ -25,7 +25,7 @@ class CategoryBimbelRequest extends FormRequest
             'name'        => 'required',
             'class'       => 'required',
             'description' => 'nullable',
-            'price'       => 'required|numeric',
+            'price'       => 'required',
         ];
     }
 
@@ -36,7 +36,6 @@ class CategoryBimbelRequest extends FormRequest
             'class.required'       => 'Kelas harus diisi.',
 
             'price.required'       => 'Harga harus diisi.',
-            'price.numeric'        => 'Harga harus berupa angka.',
         ];
     }
 }

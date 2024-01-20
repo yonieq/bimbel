@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_bimbel_id');
             $table->enum('status', ['done', 'waiting', 'pending', 'reject']);
             $table->boolean('confirm_payment')->default(false);
-            $table->text('image_payment')->nullable();
+            $table->longText('image_payment')->nullable();
             $table->text('remark')->nullable();
             $table->timestamps();
         });

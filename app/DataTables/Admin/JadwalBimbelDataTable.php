@@ -28,13 +28,10 @@ class JadwalBimbelDataTable extends DataTable
                 <a class="btn btn-sm btn-warning" href="' . route('jadwal_bimbel.edit', $data->id) . '" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                     <i class="bi bi-pencil"></i>
                 </a>
-                <form action="' . route('jadwal_bimbel.destroy', $data->id) . '" method="post" style="margin-left: 5px;"> <!-- Adjust margin as needed -->
-                    ' . csrf_field() . '
-                    ' . method_field('DELETE') . '
-                    <button type="button" class="btn btn-danger" onclick="deleteData(\'' . $data->id . '\')" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </form>
+
+                <meta name="csrf-token" content="'. csrf_token() .'">
+
+                <a href="javascript:void(0)" id="btn-delete-post" data-id="' . $data->id .'" class="btn btn-danger"><i class="bi bi-trash"></i></a>
             </div>';
             })
             ->editColumn('category_bimbel_id', function($data) {
@@ -100,7 +97,7 @@ class JadwalBimbelDataTable extends DataTable
             Column::make('category_bimbel_id')->title('Bimbel'),
             Column::make('days')->title('Hari'),
             Column::make('time_in')->title('Jam Masuk'),
-            Column::make('time_in')->title('Jam Keluar'),
+            Column::make('time_out')->title('Jam Keluar'),
         ];
     }
 

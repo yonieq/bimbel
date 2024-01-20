@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(false);
             $table->string('no_telp')->nullable();
-            $table->text('photo')->nullable();
+            $table->longText('photo')->nullable();
             $table->text('address')->nullable();
             $table->rememberToken();
             $table->timestamps();

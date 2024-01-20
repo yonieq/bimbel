@@ -72,7 +72,7 @@
 
                                 <div id="photo-preview" class="mt-2">
                                     @if($user->photo)
-                                        <img src="{{ asset('storage/user/' . $user->photo) }}" alt="User Photo" class="img-fluid" style="max-width: 100px;">
+                                        <img src="{{ $user->photo }}" alt="User Photo" class="img-fluid" style="max-width: 100px;">
                                     @endif
                                 </div>
                             </div>

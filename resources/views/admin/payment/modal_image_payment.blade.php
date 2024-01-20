@@ -15,7 +15,7 @@
                 <div id="Gallerycarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('storage/image_payment/'.$payment->image_payment) }}">
+                            <img class="d-block w-100" src="{{ $payment->image_payment }}">
                         </div>
                     </div>
                 </div>

@@ -91,7 +91,7 @@
                                         </span>
                                         @enderror
 
-                                        <img class="w-25 my-4" src="{{ asset('storage/' . $setting->logo) }}"/>
+                                        <img class="w-25 my-4" src="{{ $setting->logo }}"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -105,7 +105,7 @@
                                         </span>
                                         @enderror
 
-                                        <img class="w-25 my-4" src="{{ asset('storage/' . $setting->banner) }}"/>
+                                        <img class="w-25 my-4" src="{{ $setting->banner }}"/>
                                     </div>
                                 </div>
                                 <div class="buttons mt-4">

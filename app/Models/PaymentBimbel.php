@@ -24,4 +24,9 @@ class PaymentBimbel extends Model
     {
         return $this->hasMany(Invoice::class, 'payment_bimbels_id', 'id');
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

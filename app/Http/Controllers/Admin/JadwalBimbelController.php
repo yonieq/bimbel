@@ -102,11 +102,12 @@ class JadwalBimbelController extends Controller
     {
         //
         $data = ScheduleBimbel::findOrFail($id);
-        try {
-            $data->delete();
-            return redirect()->route('jadwal_bimbel.index')->with('success', 'Data jadwal bimbel berhasil dihapus.');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
+
+        $data->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil menghapus data'
+        ]);
     }
 }

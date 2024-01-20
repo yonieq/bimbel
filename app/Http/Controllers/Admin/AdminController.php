@@ -52,16 +52,13 @@ class AdminController extends Controller
                 'is_admin' => true
             ]);
 
-            // Handle file upload
             if ($request->hasFile('photo')) {
-                $uploadedFile = $request->file('photo');
-                $fileName = Str::random(20) . '.' . $uploadedFile->getClientOriginalExtension();
+                $logoFile = $request->file('photo');
+                $logoData = base64_encode(file_get_contents($logoFile->path()));
+                $logoExtension = $logoFile->getClientOriginalExtension();
 
-                // Store the file in storage/user
-                $uploadedFile->storeAs('user', $fileName, 'public');
-
-                // Save the file path in the user record
-                $user->update(['photo' => $fileName]);
+                $data['photo'] = 'data:image/' . $logoExtension . ';base64,' . $logoData;
+                $user->update($data);
             }
 
             return redirect()->route('user_admin.index')->with('success', 'Admin baru telah sukses dibuat');
@@ -108,19 +105,12 @@ class AdminController extends Controller
 
             // Handle file upload
             if ($request->hasFile('photo')) {
-                // Delete the old photo if it exists
-                if ($user->photo) {
-                    Storage::disk('public')->delete('user/' . $user->photo);
-                }
+                $logoFile = $request->file('photo');
+                $logoData = base64_encode(file_get_contents($logoFile->path()));
+                $logoExtension = $logoFile->getClientOriginalExtension();
 
-                $uploadedFile = $request->file('photo');
-                $fileName = Str::random(20) . '.' . $uploadedFile->getClientOriginalExtension();
-
-                // Store the file in storage/user
-                $uploadedFile->storeAs('user', $fileName, 'public');
-
-                // Save the file path in the user record
-                $user->update(['photo' => $fileName]);
+                $data['photo'] = 'data:image/' . $logoExtension . ';base64,' . $logoData;
+                $user->update($data);
             }
 
             return redirect()->route('user_admin.index')->with('success', 'Admin berhasil diubah');
@@ -134,20 +124,13 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-            // Hapus foto pengguna jika ada
-            if ($user->photo) {
-                Storage::disk('public')->delete('user/' . $user->photo);
-            }
+        $user->delete();
 
-            // Hapus pengguna
-            $user->delete();
-
-            return redirect()->route('user_admin.index')->with('success', 'Admin berhasil dihapus');
-        } catch (\Exception $e) {
-            return redirect()->route('user_admin.index')->with('error', 'Terjadi kesalahan, hubungi administrator');
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil menghapus data'
+        ]);
     }
 }

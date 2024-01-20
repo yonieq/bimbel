@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('app_name');
-            $table->text('logo');
             $table->text('description')->nullable();
-            $table->text('banner')->nullable();
             $table->string('email');
             $table->text('address');
             $table->string('phone');
+            $table->longText('logo');
+            $table->longText('banner')->nullable();
             $table->timestamps();
         });
     }

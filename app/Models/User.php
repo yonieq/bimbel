@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(StudentOfBimbel::class, 'user_id', 'id');
     }
+
+    public function payment() :HasMany
+    {
+        return $this->hasMany(PaymentBimbel::class, 'user_id', 'id');
+    }
 }

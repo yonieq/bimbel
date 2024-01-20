@@ -79,14 +79,11 @@ class BimbelController extends Controller
 
         // Handle file upload
         if ($request->hasFile('photo')) {
-            $uploadedFile = $request->file('photo');
-            $fileName = Str::random(20) . '.' . $uploadedFile->getClientOriginalExtension();
+            $logoFile = $request->file('photo');
+            $logoData = base64_encode(file_get_contents($logoFile->path()));
+            $logoExtension = $logoFile->getClientOriginalExtension();
 
-            // Store the file and get the path
-            $uploadedFile->storeAs('user', $fileName, 'public');
-
-            // Save the file path in the database
-            $data['photo'] = $fileName;
+            $data['photo'] = 'data:image/' . $logoExtension . ';base64,' . $logoData;
         } elseif ($user->photo) {
             // Jika tidak ada file yang diunggah tetapi ada foto pengguna
             // Gunakan foto pengguna yang sudah ada
@@ -122,14 +119,11 @@ class BimbelController extends Controller
         ];
 
         if ($request->hasFile('image_payment')) {
-            $uploadedFile = $request->file('image_payment');
-            $fileName = Str::random(20) . '.' . $uploadedFile->getClientOriginalExtension();
+            $logoFile = $request->file('image_payment');
+            $logoData = base64_encode(file_get_contents($logoFile->path()));
+            $logoExtension = $logoFile->getClientOriginalExtension();
 
-            // Store the file and get the path
-            $uploadedFile->storeAs('image_payment', $fileName, 'public');
-
-            // Save the file path in the database
-            $data['image_payment'] = $fileName;
+            $data['image_payment'] = 'data:image/' . $logoExtension . ';base64,' . $logoData;
         }
 
         $payment->update($data);

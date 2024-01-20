@@ -108,7 +108,7 @@
                     <tr>
                         <td class="title">
                             <img
-                                src="{{ asset('storage/' . $setting->logo) }}"
+                                src="{{ $setting->logo }}"
                                 style="width: 100%; max-width: 300px"
                             />
                         </td>

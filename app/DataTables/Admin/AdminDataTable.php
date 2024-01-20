@@ -20,13 +20,10 @@ class AdminDataTable extends DataTable
                 <a type="button" class="btn btn-sm btn-warning" href="' . route('user_admin.edit', $data->id) . '" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                     <i class="bi bi-pencil"></i>
                 </a>
-                    <form action="' . route('user_admin.destroy', $data->id) . '" method="post">
-                            ' . csrf_field() . '
-                            ' . method_field('DELETE') . '
-                    <button type="button" class="btn btn-danger " onclick="deleteData(\'' . $data->id . '\')" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                           <i class="bi bi-trash"></i>
-                     </button>
-                 </form>
+
+                    <meta name="csrf-token" content="'. csrf_token() .'">
+
+                <a href="javascript:void(0)" id="btn-delete-post" data-id="' . $data->id .'" class="btn btn-danger"><i class="bi bi-trash"></i></a>
             </div>';
             })
             ->editColumn('created_at', function($data) {
