@@ -84,9 +84,7 @@ class PaymentController extends Controller
         $this->data['invoice'] = Invoice::where('payment_bimbels_id', $id)->first();
 
         $pdf = Pdf::loadView('template.invoice', $this->data);
-
-
-
+//
         return $pdf->download($this->data['invoice']->code.'.pdf');
     }
 }

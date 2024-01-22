@@ -187,7 +187,7 @@
 
                         <h2 class="mb-4">Apa itu POLMIKA ?</h2>
 
-                        <p>Polmika adalah platform kursus online yang menyediakan berbagai jenis kursus multidisiplin untuk meningkatkan pengetahuan dan keterampilan pengguna di berbagai bidang.
+                        <p>Polmika adalah lembaga kursus bimbingan belajar yang menyediakan berbagai jenis kursus multidisiplin untuk meningkatkan pengetahuan dan keterampilan pengguna di berbagai bidang.
                             Dengan fokus pada kursus komputer, bahasa Inggris, dan topik relevan lainnya, Polmika memberikan pengalaman belajar interaktif dan terstruktur.</p>
                     </div>
                 </div>

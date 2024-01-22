@@ -115,7 +115,7 @@
 
                         <td>
                             No. Invoice #: {{ $invoice->code }}<br />
-                            Created: {{ formatTanggal($invoice->created_at) }}<br />
+                            Tanggal Dibuat: {{ formatTanggal($invoice->created_at) }}<br />
                         </td>
                     </tr>
                 </table>
@@ -143,9 +143,9 @@
         </tr>
 
         <tr class="heading">
-            <td>Payment Method</td>
+            <td>Pembayaran</td>
 
-            <td>Check #</td>
+            <td></td>
         </tr>
 
         <tr class="details">
@@ -157,7 +157,7 @@
         <tr class="heading">
             <td>Item</td>
 
-            <td>Price</td>
+            <td>Harga</td>
         </tr>
 
         <tr class="item">
@@ -184,6 +184,14 @@
             <td>Total: Rp. {{ formatRupiah($payment->bimbel->price) }}</td>
         </tr>
     </table>
+    <br>
+    <div style="width: 50%; font-size: 13px;">
+        <strong><p>Notes : </p></strong>
+        <ol>
+            <li>Harga Bimbel yang tertera sudah termasuk Biaya pendaftaran Rp 300.000.</li>
+            <li>Uang yang sudah dibayarkan tidak dapat diminta kembali dengan alasan apapun.</li>
+        </ol>
+    </div>
 </div>
 </body>
 </html>
